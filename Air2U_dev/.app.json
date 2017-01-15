@@ -101,8 +101,29 @@
     {
       "type": "kendo-ui-mobile:view",
       "name": "loginView",
-      "components": [],
-      "title": "Log In",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:authentication",
+          "name": "loginViewModel",
+          "dataProvider": "backendServices",
+          "enableRegistration": true,
+          "gotoRegisterLabel": "Register for Air2U Account",
+          "registerEmailLabel": "Email",
+          "registerPasswordLabel": "Password",
+          "registerNameLabel": "Name",
+          "registerLabel": "Register",
+          "registerRedirect": "home",
+          "gotoSigninLabel": "Log In",
+          "enableLogout": false,
+          "enableRememberme": true,
+          "remembermeLabel": "Remember Me",
+          "emailLabel": "Email",
+          "passwordLabel": "Password",
+          "signinLabel": "Log In",
+          "signinRedirect": "home"
+        }
+      ],
+      "title": "Log In/Out",
       "addToNavigation": true,
       "icon": "mostrecent"
     },

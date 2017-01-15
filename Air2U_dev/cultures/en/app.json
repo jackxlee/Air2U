@@ -42,7 +42,19 @@
     "title": "My Profile"
   },
   "loginView": {
-    "title": "Log In"
+    "title": "Log In/Out",
+    "loginViewModel": {
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "signinLabel": "Log In",
+      "gotoRegisterLabel": "Register for Air2U Account",
+      "remembermeLabel": "Remember Me",
+      "registerEmailLabel": "Email",
+      "registerPasswordLabel": "Password",
+      "registerNameLabel": "Name",
+      "registerLabel": "Register",
+      "gotoSigninLabel": "Log In"
+    }
   },
   "categoryListView": {
     "title": "Category",
