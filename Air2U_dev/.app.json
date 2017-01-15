@@ -5,17 +5,153 @@
       "type": "kendo-ui-mobile:view",
       "name": "home",
       "components": [],
-      "title": "Home View",
+      "title": "Home",
       "addToNavigation": true,
       "icon": "home"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "shoppingCartView",
+      "components": [],
+      "title": "Shopping Cart",
+      "addToNavigation": true,
+      "icon": "cart"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "checkoutView",
+      "components": [],
+      "title": "Checkout",
+      "addToNavigation": true,
+      "icon": "action"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "purchaseHistoryView",
+      "components": [],
+      "title": "Purchase History",
+      "addToNavigation": true,
+      "icon": "bookmarks"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "deliveryPoliciesView",
+      "components": [],
+      "title": "Delivery Policies",
+      "addToNavigation": true,
+      "icon": "globe"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "aboutUsView",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:about",
+          "name": "aboutUsViewModel",
+          "appName": "Air2U",
+          "appVersion": "Version 1.0",
+          "appIcon": "aquapower-logo.png",
+          "appDescription": "Aqua Power was established in 2003 from a small proprietary business operating under the name of United Marketing, promoting water dispenser and filtration system. Since then, the business has expanded and transformed into one of the major water solution specialists in Malaysia, marketing water products ranging from bottled water, water dispenser and Reverse Osmosis (RO) and other filtration system.\n \nAqua Power Sdn Bhd was incorporated on 18th Jun 2003, with the principle activities of marketing and servicing of water dispenser and filtration system. The company manufacturing plants use its own RO system, which are designed and commissioned to produce RO water packaged in bottle sizes ranging from 230ml bottle size to 5 gallon bottle size.",
+          "contactButton": true,
+          "contactLabel": "Contact us",
+          "contactMail": "enquiry@aquapowerwater.com",
+          "facebookButton": true,
+          "facebookLabel": "Like us on Facebook",
+          "facebookLink": "https://www.facebook.com/aquapowersystems",
+          "twitterButton": true,
+          "twitterLabel": "Follow us on Twitter",
+          "twitterLink": "https://twitter.com/aquapowersystem"
+        }
+      ],
+      "title": "About Us",
+      "addToNavigation": true,
+      "icon": "info"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "contactUsView",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:about",
+          "name": "contactUsViewModel",
+          "appIcon": "aquapower-logo.png",
+          "contactButton": true,
+          "contactLabel": "Contact us",
+          "contactMail": "enquiry@aquapowerwater.com",
+          "facebookButton": true,
+          "facebookLabel": "Like us on Facebook",
+          "facebookLink": "https://www.facebook.com/aquapowersystems",
+          "twitterButton": true,
+          "twitterLabel": "Follow us on Twitter",
+          "twitterLink": "https://twitter.com/aquapowersystem"
+        }
+      ],
+      "title": "Contact Us",
+      "addToNavigation": true,
+      "icon": "featured"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "myProfileView",
+      "components": [],
+      "title": "My Profile",
+      "addToNavigation": true,
+      "icon": "contacts"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "loginView",
+      "components": [],
+      "title": "Log In",
+      "addToNavigation": true,
+      "icon": "mostrecent"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "categoryListView",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:editableList",
+          "listExtraFields": [],
+          "detailExtraFields": [],
+          "addScreenExtraFields": [],
+          "editScreenExtraFields": [],
+          "components": [],
+          "name": "categoryListViewModel",
+          "dataProvider": "backendServices",
+          "collection": "Category",
+          "headerField": "Categoryname",
+          "iconField": false,
+          "addItemForm": false,
+          "editItemForm": false,
+          "deleteItemButton": false,
+          "pullToRefresh": true,
+          "endlessScroll": false,
+          "isMapView": false,
+          "serverSideSorting": false,
+          "serverSidePaging": false,
+          "detailHeaderFieldSource": "static",
+          "detailHeaderFieldValue": "Detail"
+        }
+      ],
+      "title": "Category",
+      "addToNavigation": true,
+      "icon": "organize"
     }
   ],
-  "dataProviders": [],
+  "dataProviders": [
+    {
+      "type": "kendo-ui-mobile:dataProvider",
+      "name": "backendServices",
+      "source": "everlive",
+      "everliveKey": "o6yuauaw7f5m56jb",
+      "offlineStorage": true,
+      "title": "Backend Services"
+    }
+  ],
   "name": "kendoUiMobileApp",
-  "navigation": "tabstrip",
+  "navigation": "drawer",
   "view": "home",
-  "transition": "slide",
-  "showMoreTab": true,
   "skin": "nova",
   "skinMainColor": "#32364c",
   "skinTextColor": "#ffffff",
