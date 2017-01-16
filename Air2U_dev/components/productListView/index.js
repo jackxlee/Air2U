@@ -72,6 +72,9 @@ app.localization.registerView('productListView');
                 for (var i = 0; i < data.length; i++) {
                     var dataItem = data[i];
 
+                    dataItem['ProductImagesUrl'] =
+                        processImage(dataItem['ProductImages']);
+
                     /// start flattenLocation property
                     flattenLocationProperties(dataItem);
                     /// end flattenLocation property
@@ -93,12 +96,16 @@ app.localization.registerView('productListView');
             schema: {
                 model: {
                     fields: {
-                        'ProductDescription': {
-                            field: 'ProductDescription',
+                        'ProductName': {
+                            field: 'ProductName',
                             defaultValue: ''
                         },
                         'cvPrice': {
                             field: 'cvPrice',
+                            defaultValue: ''
+                        },
+                        'ProductImages': {
+                            field: 'ProductImages',
                             defaultValue: ''
                         },
                     }
@@ -183,8 +190,8 @@ app.localization.registerView('productListView');
                     itemModel = dataSource.getByUid(item);
                 itemModel.ProductImagesUrl = processImage(itemModel.ProductImages);
 
-                if (!itemModel.ProductDescription) {
-                    itemModel.ProductDescription = String.fromCharCode(160);
+                if (!itemModel.ProductName) {
+                    itemModel.ProductName = String.fromCharCode(160);
                 }
 
                 /// start detail form initialization

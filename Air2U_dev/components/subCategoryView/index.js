@@ -72,6 +72,9 @@ app.localization.registerView('subCategoryView');
                 for (var i = 0; i < data.length; i++) {
                     var dataItem = data[i];
 
+                    dataItem['cateImgUrlUrl'] =
+                        processImage(dataItem['cateImgUrl']);
+
                     /// start flattenLocation property
                     flattenLocationProperties(dataItem);
                     /// end flattenLocation property
@@ -95,6 +98,10 @@ app.localization.registerView('subCategoryView');
                     fields: {
                         'Categoryname': {
                             field: 'Categoryname',
+                            defaultValue: ''
+                        },
+                        'cateImgUrl': {
+                            field: 'cateImgUrl',
                             defaultValue: ''
                         },
                     }
@@ -161,7 +168,7 @@ app.localization.registerView('subCategoryView');
                 var dataItem = e.dataItem || subCategoryViewModel.originalItem;
 
                 app.mobileApp.navigate('components/productListView/view.html?filter=' + encodeURIComponent(JSON.stringify({
-                    field: 'ProductDescription',
+                    field: 'ProductCategory',
                     value: dataItem.Id,
                     operator: 'eq'
                 })));
