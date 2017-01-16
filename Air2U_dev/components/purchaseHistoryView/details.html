@@ -2,7 +2,7 @@
     <header data-role="header">
         <div data-role="navbar" class="header-text">
             <a data-role="backbutton" data-align="left">Back</a>
-            <span data-bind="text: strings.purchaseHistoryView.purchaseHistoryViewModel.detailHeaderFieldValue"></span>
+            <span data-bind="text: currentItem['Product']"></span>
         </div>
     </header>
 
@@ -10,6 +10,9 @@
         <div class="km-listview-wrapper">
             <ul class="km-listview km-list km-listinset details-fields">
 
+                <li>
+                    <div data-bind="html: currentItem.Product"></div>
+                </li>
 
             </ul>
         </div>

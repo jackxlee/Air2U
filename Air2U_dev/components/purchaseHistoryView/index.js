@@ -64,13 +64,16 @@ app.localization.registerView('purchaseHistoryView');
         dataSourceOptions = {
             type: 'everlive',
             transport: {
-                typeName: 'Order',
+                typeName: 'ProductOrder',
                 dataProvider: dataProvider
             },
             change: function(e) {
                 var data = this.data();
                 for (var i = 0; i < data.length; i++) {
                     var dataItem = data[i];
+
+                    dataItem['ProductUrl'] =
+                        processImage(dataItem['Product']);
 
                     /// start flattenLocation property
                     flattenLocationProperties(dataItem);
@@ -93,8 +96,8 @@ app.localization.registerView('purchaseHistoryView');
             schema: {
                 model: {
                     fields: {
-                        'OrderNumber': {
-                            field: 'OrderNumber',
+                        'Product': {
+                            field: 'Product',
                             defaultValue: ''
                         },
                     }
@@ -160,7 +163,11 @@ app.localization.registerView('purchaseHistoryView');
             itemClick: function(e) {
                 var dataItem = e.dataItem || purchaseHistoryViewModel.originalItem;
 
-                app.mobileApp.navigate('#components/purchaseHistoryView/details.html?uid=' + dataItem.uid);
+                app.mobileApp.navigate('components/subCategoryView/view.html?filter=' + encodeURIComponent(JSON.stringify({
+                    field: 'ParentCategory',
+                    value: dataItem.Id,
+                    operator: 'eq'
+                })));
 
             },
             detailsShow: function(e) {
@@ -178,8 +185,8 @@ app.localization.registerView('purchaseHistoryView');
                     dataSource = purchaseHistoryViewModel.get('dataSource'),
                     itemModel = dataSource.getByUid(item);
 
-                if (!itemModel.OrderNumber) {
-                    itemModel.OrderNumber = String.fromCharCode(160);
+                if (!itemModel.Product) {
+                    itemModel.Product = String.fromCharCode(160);
                 }
 
                 /// start detail form initialization

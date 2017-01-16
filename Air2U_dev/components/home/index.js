@@ -21,7 +21,7 @@ function processImage(img) {
         var empty1x1png = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQI12NgYAAAAAMAASDVlMcAAAAASUVORK5CYII=';
         img = 'data:img/png;base64,' + empty1x1png;
     } else if (!isAbsolute(img)) {
-        var setup = app.data.air2uDb.setup || {};
+        var setup = app.data.backendServices.setup || {};
         img = setup.scheme + ':' + setup.url + setup.appId + '/Files/' + img + '/Download';
     }
 
@@ -90,6 +90,9 @@ function processImage(img) {
                 for (var i = 0; i < data.length; i++) {
                     var dataItem = data[i];
 
+                    dataItem['parentCateImageUrl'] =
+                        processImage(dataItem['parentCateImage']);
+
                     /// start flattenLocation property
                     flattenLocationProperties(dataItem);
                     /// end flattenLocation property
@@ -113,6 +116,10 @@ function processImage(img) {
                     fields: {
                         'Categoryname': {
                             field: 'Categoryname',
+                            defaultValue: ''
+                        },
+                        'parentCateImage': {
+                            field: 'parentCateImage',
                             defaultValue: ''
                         },
                     }
@@ -199,7 +206,6 @@ function processImage(img) {
                 var item = uid,
                     dataSource = homeModel.get('dataSource'),
                     itemModel = dataSource.getByUid(item);
-                itemModel.parentCateImageUrl = processImage(itemModel.parentCateImage);
 
                 if (!itemModel.Categoryname) {
                     itemModel.Categoryname = String.fromCharCode(160);

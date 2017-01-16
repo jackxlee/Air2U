@@ -12,13 +12,20 @@
     "title": "Shopping Cart"
   },
   "checkoutView": {
-    "title": "Checkout"
+    "title": "Checkout",
+    "checkoutViewModel": {
+      "submitButton": "Confirm",
+      "cancelButton": "Cancel",
+      "editableListForm2": {
+        "shoppingcart": {
+          "title": "My Total :"
+        }
+      }
+    }
   },
   "purchaseHistoryView": {
     "title": "Purchase History",
-    "purchaseHistoryViewModel": {
-      "detailHeaderFieldValue": "Detail"
-    }
+    "purchaseHistoryViewModel": {}
   },
   "deliveryPoliciesView": {
     "title": "Delivery Policies"

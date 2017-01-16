@@ -16,6 +16,7 @@
           "dataProvider": "backendServices",
           "collection": "ParentCategory",
           "headerField": "Categoryname",
+          "imageField": "parentCateImage",
           "addItemForm": false,
           "editItemForm": false,
           "deleteItemButton": false,
@@ -29,7 +30,7 @@
           "itemActionSecondaryKey": "Categoryname",
           "detailHeaderFieldSource": "dataBound",
           "detailHeaderField": "Categoryname",
-          "detailImageField": "parentCateImage"
+          "detailDescriptionField": "Categoryname"
         }
       ],
       "title": "Home",
@@ -47,7 +48,35 @@
     {
       "type": "kendo-ui-mobile:view",
       "name": "checkoutView",
-      "components": [],
+      "components": [
+        {
+          "type": "kendo-ui-mobile:form",
+          "components": [
+            {
+              "type": "kendo-ui-mobile:editableListForm",
+              "components": [
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "shoppingcart",
+                  "dataBindingRelationChildren": "[]",
+                  "dataBindingMultipleSelectChildren": "[]",
+                  "title": "My Total :",
+                  "inputType": "image",
+                  "titlePosition": "hidden",
+                  "alignment": "left",
+                  "imageUpload": "shopping_cart.png"
+                }
+              ],
+              "name": "editableListForm2",
+              "formType": "add"
+            }
+          ],
+          "name": "checkoutViewModel",
+          "enableDataBinding": false,
+          "submitButton": "Confirm",
+          "cancelButton": "Cancel"
+        }
+      ],
       "title": "Checkout",
       "addToNavigation": true,
       "icon": "action"
@@ -65,23 +94,28 @@
           "components": [],
           "name": "purchaseHistoryViewModel",
           "dataProvider": "backendServices",
-          "collection": "Order",
-          "headerField": "OrderNumber",
+          "collection": "ProductOrder",
+          "headerField": "Product",
+          "imageField": "Product",
           "addItemForm": false,
           "editItemForm": false,
           "deleteItemButton": false,
-          "pullToRefresh": false,
+          "pullToRefresh": true,
           "endlessScroll": false,
           "isMapView": false,
           "serverSideSorting": false,
           "serverSidePaging": false,
-          "detailHeaderFieldSource": "static",
-          "detailHeaderFieldValue": "Detail"
+          "itemActionView": "subCategoryView",
+          "itemActionPrimaryKey": "Id",
+          "itemActionSecondaryKey": "ParentCategory",
+          "detailHeaderFieldSource": "dataBound",
+          "detailHeaderField": "Product",
+          "detailDescriptionField": "Product"
         }
       ],
       "title": "Purchase History",
       "addToNavigation": true,
-      "icon": "bookmarks"
+      "icon": "reply"
     },
     {
       "type": "kendo-ui-mobile:view",
