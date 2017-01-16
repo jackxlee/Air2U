@@ -15,13 +15,14 @@
     <script src="kendo/js/kendo.mobile.min.js"></script>
     <script src="app.js"></script>
     <script src="bower_components/everlive/min/everlive.all.min.js"></script>
+	<script src="https://bs-static.cdn.telerik.com/1.6.2/everlive.all.min.js"></script>
     <script src="dataProviders/backendServices.js"></script>
 </head>
 
 <body id="kendoUiMobileApp">
+    <script src="components/loginModelView/index.js"></script>
     <script src="components/productListView/index.js"></script>
     <script src="components/subCategoryView/index.js"></script>
-    <script src="components/loginView/index.js"></script>
     <script src="components/myProfileView/index.js"></script>
     <script src="components/aboutUsView/index.js"></script>
     <script src="components/deliveryPoliciesView/index.js"></script>
@@ -46,7 +47,7 @@
         </header>
     </div>
 
-    <div id="appDrawer" data-role="drawer" data-title="Navigation">
+    <div id="appDrawer" data-role="drawer" data-title="Air2U">
         <header data-role="header">
             <div data-role="navbar">
                 <span data-role="view-title"></span>
@@ -60,7 +61,7 @@
             <li><a href="components/deliveryPoliciesView/view.html" data-icon="globe"><span class="navigation-link-text" data-bind="text: strings.deliveryPoliciesView.title"></span></a></li>
             <li><a href="components/aboutUsView/view.html" data-icon="info"><span class="navigation-link-text" data-bind="text: strings.aboutUsView.title"></span></a></li>
             <li><a href="components/myProfileView/view.html" data-icon="contacts"><span class="navigation-link-text" data-bind="text: strings.myProfileView.title"></span></a></li>
-            <li><a href="components/loginView/view.html" data-icon="mostrecent"><span class="navigation-link-text" data-bind="text: strings.loginView.title"></span></a></li>
+            <li><a href="components/loginModelView/view.html" data-icon="mostrecent"><span class="navigation-link-text" data-bind="text: strings.loginModelView.title"></span></a></li>
         </ul>
     </div>
     <div id="notify" class="notify-pop-up">

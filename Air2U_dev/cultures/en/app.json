@@ -9,7 +9,11 @@
     "homeModel": {}
   },
   "shoppingCartView": {
-    "title": "Shopping Cart"
+    "title": "Shopping Cart",
+    "shoppingCartViewModel": {
+      "detailHeaderFieldValue": "Detail",
+      "editScreenHeaderValue": "Edit"
+    }
   },
   "checkoutView": {
     "title": "Checkout",
@@ -44,21 +48,6 @@
   "myProfileView": {
     "title": "My Profile"
   },
-  "loginView": {
-    "title": "Log In/Out",
-    "loginViewModel": {
-      "emailLabel": "Email",
-      "passwordLabel": "Password",
-      "signinLabel": "Log In",
-      "gotoRegisterLabel": "Register for Air2U Account",
-      "remembermeLabel": "Remember Me",
-      "registerEmailLabel": "Email",
-      "registerPasswordLabel": "Password",
-      "registerNameLabel": "Name",
-      "registerLabel": "Register for Air2U Account",
-      "gotoSigninLabel": "Log In"
-    }
-  },
   "subCategoryView": {
     "title": "SubCategory",
     "subCategoryViewModel": {
@@ -67,8 +56,9 @@
   },
   "productListView": {
     "title": "ProductList",
-    "productListViewModel": {
-      "detailHeaderFieldValue": "Detail"
-    }
+    "productListViewModel": {}
+  },
+  "loginModelView": {
+    "title": "Log In/Out"
   }
 }

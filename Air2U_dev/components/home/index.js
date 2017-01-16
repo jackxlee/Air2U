@@ -186,7 +186,7 @@ function processImage(img) {
                 var dataItem = e.dataItem || homeModel.originalItem;
 
                 app.mobileApp.navigate('components/subCategoryView/view.html?filter=' + encodeURIComponent(JSON.stringify({
-                    field: 'Categoryname',
+                    field: 'ParentCategory',
                     value: dataItem.Id,
                     operator: 'eq'
                 })));

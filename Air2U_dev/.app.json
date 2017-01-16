@@ -20,14 +20,14 @@
           "addItemForm": false,
           "editItemForm": false,
           "deleteItemButton": false,
-          "pullToRefresh": false,
+          "pullToRefresh": true,
           "endlessScroll": false,
           "isMapView": false,
           "serverSideSorting": false,
           "serverSidePaging": false,
           "itemActionView": "subCategoryView",
           "itemActionPrimaryKey": "Id",
-          "itemActionSecondaryKey": "Categoryname",
+          "itemActionSecondaryKey": "ParentCategory",
           "detailHeaderFieldSource": "dataBound",
           "detailHeaderField": "Categoryname",
           "detailDescriptionField": "Categoryname"
@@ -40,7 +40,33 @@
     {
       "type": "kendo-ui-mobile:view",
       "name": "shoppingCartView",
-      "components": [],
+      "components": [
+        {
+          "type": "kendo-ui-mobile:editableList",
+          "listExtraFields": [],
+          "detailExtraFields": [],
+          "addScreenExtraFields": [],
+          "editScreenExtraFields": [],
+          "components": [],
+          "name": "shoppingCartViewModel",
+          "dataProvider": "backendServices",
+          "collection": "ProductOrder",
+          "headerField": "Product",
+          "imageField": "Product",
+          "addItemForm": false,
+          "editItemForm": true,
+          "editScreenHeaderSource": "static",
+          "editScreenHeaderValue": "Edit",
+          "deleteItemButton": false,
+          "pullToRefresh": false,
+          "endlessScroll": false,
+          "isMapView": false,
+          "serverSideSorting": false,
+          "serverSidePaging": false,
+          "detailHeaderFieldSource": "static",
+          "detailHeaderFieldValue": "Detail"
+        }
+      ],
       "title": "Shopping Cart",
       "addToNavigation": true,
       "icon": "cart"
@@ -161,35 +187,6 @@
     },
     {
       "type": "kendo-ui-mobile:view",
-      "name": "loginView",
-      "components": [
-        {
-          "type": "kendo-ui-mobile:authentication",
-          "name": "loginViewModel",
-          "dataProvider": "backendServices",
-          "enableRegistration": true,
-          "gotoRegisterLabel": "Register for Air2U Account",
-          "registerEmailLabel": "Email",
-          "registerPasswordLabel": "Password",
-          "registerNameLabel": "Name",
-          "registerLabel": "Register for Air2U Account",
-          "registerRedirect": "home",
-          "gotoSigninLabel": "Log In",
-          "enableLogout": false,
-          "enableRememberme": true,
-          "remembermeLabel": "Remember Me",
-          "emailLabel": "Email",
-          "passwordLabel": "Password",
-          "signinLabel": "Log In",
-          "signinRedirect": "home"
-        }
-      ],
-      "title": "Log In/Out",
-      "addToNavigation": true,
-      "icon": "mostrecent"
-    },
-    {
-      "type": "kendo-ui-mobile:view",
       "name": "subCategoryView",
       "components": [
         {
@@ -207,7 +204,7 @@
           "addItemForm": false,
           "editItemForm": false,
           "deleteItemButton": false,
-          "pullToRefresh": false,
+          "pullToRefresh": true,
           "endlessScroll": false,
           "isMapView": false,
           "serverSideSorting": false,
@@ -255,6 +252,14 @@
       ],
       "title": "ProductList",
       "addToNavigation": false
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "loginModelView",
+      "components": [],
+      "title": "Log In/Out",
+      "addToNavigation": true,
+      "icon": "mostrecent"
     }
   ],
   "dataProviders": [
