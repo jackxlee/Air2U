@@ -4,7 +4,34 @@
     {
       "type": "kendo-ui-mobile:view",
       "name": "home",
-      "components": [],
+      "components": [
+        {
+          "type": "kendo-ui-mobile:editableList",
+          "listExtraFields": [],
+          "detailExtraFields": [],
+          "addScreenExtraFields": [],
+          "editScreenExtraFields": [],
+          "components": [],
+          "name": "homeModel",
+          "dataProvider": "backendServices",
+          "collection": "ParentCategory",
+          "headerField": "Categoryname",
+          "addItemForm": false,
+          "editItemForm": false,
+          "deleteItemButton": false,
+          "pullToRefresh": false,
+          "endlessScroll": false,
+          "isMapView": false,
+          "serverSideSorting": false,
+          "serverSidePaging": false,
+          "itemActionView": "subCategoryView",
+          "itemActionPrimaryKey": "Id",
+          "itemActionSecondaryKey": "Categoryname",
+          "detailHeaderFieldSource": "dataBound",
+          "detailHeaderField": "Categoryname",
+          "detailImageField": "parentCateImage"
+        }
+      ],
       "title": "Home",
       "addToNavigation": true,
       "icon": "home"
@@ -28,7 +55,30 @@
     {
       "type": "kendo-ui-mobile:view",
       "name": "purchaseHistoryView",
-      "components": [],
+      "components": [
+        {
+          "type": "kendo-ui-mobile:editableList",
+          "listExtraFields": [],
+          "detailExtraFields": [],
+          "addScreenExtraFields": [],
+          "editScreenExtraFields": [],
+          "components": [],
+          "name": "purchaseHistoryViewModel",
+          "dataProvider": "backendServices",
+          "collection": "Order",
+          "headerField": "OrderNumber",
+          "addItemForm": false,
+          "editItemForm": false,
+          "deleteItemButton": false,
+          "pullToRefresh": false,
+          "endlessScroll": false,
+          "isMapView": false,
+          "serverSideSorting": false,
+          "serverSidePaging": false,
+          "detailHeaderFieldSource": "static",
+          "detailHeaderFieldValue": "Detail"
+        }
+      ],
       "title": "Purchase History",
       "addToNavigation": true,
       "icon": "bookmarks"
@@ -69,29 +119,6 @@
     },
     {
       "type": "kendo-ui-mobile:view",
-      "name": "contactUsView",
-      "components": [
-        {
-          "type": "kendo-ui-mobile:about",
-          "name": "contactUsViewModel",
-          "appIcon": "aquapower-logo.png",
-          "contactButton": true,
-          "contactLabel": "Contact us",
-          "contactMail": "enquiry@aquapowerwater.com",
-          "facebookButton": true,
-          "facebookLabel": "Like us on Facebook",
-          "facebookLink": "https://www.facebook.com/aquapowersystems",
-          "twitterButton": true,
-          "twitterLabel": "Follow us on Twitter",
-          "twitterLink": "https://twitter.com/aquapowersystem"
-        }
-      ],
-      "title": "Contact Us",
-      "addToNavigation": true,
-      "icon": "featured"
-    },
-    {
-      "type": "kendo-ui-mobile:view",
       "name": "myProfileView",
       "components": [],
       "title": "My Profile",
@@ -111,7 +138,7 @@
           "registerEmailLabel": "Email",
           "registerPasswordLabel": "Password",
           "registerNameLabel": "Name",
-          "registerLabel": "Register",
+          "registerLabel": "Register for Air2U Account",
           "registerRedirect": "home",
           "gotoSigninLabel": "Log In",
           "enableLogout": false,
@@ -129,7 +156,7 @@
     },
     {
       "type": "kendo-ui-mobile:view",
-      "name": "categoryListView",
+      "name": "subCategoryView",
       "components": [
         {
           "type": "kendo-ui-mobile:editableList",
@@ -138,26 +165,60 @@
           "addScreenExtraFields": [],
           "editScreenExtraFields": [],
           "components": [],
-          "name": "categoryListViewModel",
+          "name": "subCategoryViewModel",
           "dataProvider": "backendServices",
           "collection": "Category",
           "headerField": "Categoryname",
-          "iconField": false,
           "addItemForm": false,
           "editItemForm": false,
           "deleteItemButton": false,
-          "pullToRefresh": true,
+          "pullToRefresh": false,
+          "endlessScroll": false,
+          "isMapView": false,
+          "serverSideSorting": false,
+          "serverSidePaging": false,
+          "itemActionView": "productListView",
+          "itemActionPrimaryKey": "Id",
+          "itemActionSecondaryKey": "ProductDescription",
+          "detailHeaderFieldSource": "static",
+          "detailHeaderFieldValue": "Detail"
+        }
+      ],
+      "title": "SubCategory",
+      "addToNavigation": false
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "productListView",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:editableList",
+          "listExtraFields": [],
+          "detailExtraFields": [],
+          "addScreenExtraFields": [],
+          "editScreenExtraFields": [],
+          "components": [],
+          "name": "productListViewModel",
+          "dataProvider": "backendServices",
+          "collection": "Product",
+          "headerField": "ProductDescription",
+          "subHeaderField": "cvPrice",
+          "addItemForm": false,
+          "editItemForm": false,
+          "deleteItemButton": false,
+          "pullToRefresh": false,
           "endlessScroll": false,
           "isMapView": false,
           "serverSideSorting": false,
           "serverSidePaging": false,
           "detailHeaderFieldSource": "static",
-          "detailHeaderFieldValue": "Detail"
+          "detailHeaderFieldValue": "Detail",
+          "detailDescriptionField": "ProductDescription",
+          "detailImageField": "ProductImages"
         }
       ],
-      "title": "Category",
-      "addToNavigation": true,
-      "icon": "organize"
+      "title": "ProductList",
+      "addToNavigation": false
     }
   ],
   "dataProviders": [

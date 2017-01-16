@@ -1,27 +1,27 @@
 'use strict';
 
-app.purchaseHistoryView = kendo.observable({
+app.subCategoryView = kendo.observable({
     onShow: function() {},
     afterShow: function() {}
 });
-app.localization.registerView('purchaseHistoryView');
+app.localization.registerView('subCategoryView');
 
-// START_CUSTOM_CODE_purchaseHistoryView
+// START_CUSTOM_CODE_subCategoryView
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 
-// END_CUSTOM_CODE_purchaseHistoryView
+// END_CUSTOM_CODE_subCategoryView
 (function(parent) {
     var dataProvider = app.data.backendServices,
         /// start global model properties
         /// end global model properties
         fetchFilteredData = function(paramFilter, searchFilter) {
-            var model = parent.get('purchaseHistoryViewModel'),
+            var model = parent.get('subCategoryViewModel'),
                 dataSource;
 
             if (model) {
                 dataSource = model.get('dataSource');
             } else {
-                parent.set('purchaseHistoryViewModel_delayedFetch', paramFilter || null);
+                parent.set('subCategoryViewModel_delayedFetch', paramFilter || null);
                 return;
             }
 
@@ -64,7 +64,7 @@ app.localization.registerView('purchaseHistoryView');
         dataSourceOptions = {
             type: 'everlive',
             transport: {
-                typeName: 'Order',
+                typeName: 'Category',
                 dataProvider: dataProvider
             },
             change: function(e) {
@@ -93,8 +93,8 @@ app.localization.registerView('purchaseHistoryView');
             schema: {
                 model: {
                     fields: {
-                        'OrderNumber': {
-                            field: 'OrderNumber',
+                        'Categoryname': {
+                            field: 'Categoryname',
                             defaultValue: ''
                         },
                     }
@@ -104,7 +104,7 @@ app.localization.registerView('purchaseHistoryView');
         },
         /// start data sources
         /// end data sources
-        purchaseHistoryViewModel = kendo.observable({
+        subCategoryViewModel = kendo.observable({
             _dataSourceOptions: dataSourceOptions,
             fixHierarchicalData: function(data) {
                 var result = {},
@@ -158,36 +158,40 @@ app.localization.registerView('purchaseHistoryView');
                 return result;
             },
             itemClick: function(e) {
-                var dataItem = e.dataItem || purchaseHistoryViewModel.originalItem;
+                var dataItem = e.dataItem || subCategoryViewModel.originalItem;
 
-                app.mobileApp.navigate('#components/purchaseHistoryView/details.html?uid=' + dataItem.uid);
+                app.mobileApp.navigate('components/productListView/view.html?filter=' + encodeURIComponent(JSON.stringify({
+                    field: 'ProductDescription',
+                    value: dataItem.Id,
+                    operator: 'eq'
+                })));
 
             },
             detailsShow: function(e) {
                 var uid = e.view.params.uid,
-                    dataSource = purchaseHistoryViewModel.get('dataSource'),
+                    dataSource = subCategoryViewModel.get('dataSource'),
                     itemModel = dataSource.getByUid(uid);
 
-                purchaseHistoryViewModel.setCurrentItemByUid(uid);
+                subCategoryViewModel.setCurrentItemByUid(uid);
 
                 /// start detail form show
                 /// end detail form show
             },
             setCurrentItemByUid: function(uid) {
                 var item = uid,
-                    dataSource = purchaseHistoryViewModel.get('dataSource'),
+                    dataSource = subCategoryViewModel.get('dataSource'),
                     itemModel = dataSource.getByUid(item);
 
-                if (!itemModel.OrderNumber) {
-                    itemModel.OrderNumber = String.fromCharCode(160);
+                if (!itemModel.Categoryname) {
+                    itemModel.Categoryname = String.fromCharCode(160);
                 }
 
                 /// start detail form initialization
                 /// end detail form initialization
 
-                purchaseHistoryViewModel.set('originalItem', itemModel);
-                purchaseHistoryViewModel.set('currentItem',
-                    purchaseHistoryViewModel.fixHierarchicalData(itemModel));
+                subCategoryViewModel.set('originalItem', itemModel);
+                subCategoryViewModel.set('currentItem',
+                    subCategoryViewModel.fixHierarchicalData(itemModel));
 
                 return itemModel;
             },
@@ -205,22 +209,22 @@ app.localization.registerView('purchaseHistoryView');
 
     if (typeof dataProvider.sbProviderReady === 'function') {
         dataProvider.sbProviderReady(function dl_sbProviderReady() {
-            parent.set('purchaseHistoryViewModel', purchaseHistoryViewModel);
-            var param = parent.get('purchaseHistoryViewModel_delayedFetch');
+            parent.set('subCategoryViewModel', subCategoryViewModel);
+            var param = parent.get('subCategoryViewModel_delayedFetch');
             if (typeof param !== 'undefined') {
-                parent.set('purchaseHistoryViewModel_delayedFetch', undefined);
+                parent.set('subCategoryViewModel_delayedFetch', undefined);
                 fetchFilteredData(param);
             }
         });
     } else {
-        parent.set('purchaseHistoryViewModel', purchaseHistoryViewModel);
+        parent.set('subCategoryViewModel', subCategoryViewModel);
     }
 
     parent.set('onShow', function(e) {
         var param = e.view.params.filter ? JSON.parse(e.view.params.filter) : null,
             isListmenu = false,
             backbutton = e.view.element && e.view.element.find('header [data-role="navbar"] .backButtonWrapper'),
-            dataSourceOptions = purchaseHistoryViewModel.get('_dataSourceOptions'),
+            dataSourceOptions = subCategoryViewModel.get('_dataSourceOptions'),
             dataSource;
 
         if (param || isListmenu) {
@@ -235,13 +239,13 @@ app.localization.registerView('purchaseHistoryView');
         }
 
         dataSource = new kendo.data.DataSource(dataSourceOptions);
-        purchaseHistoryViewModel.set('dataSource', dataSource);
+        subCategoryViewModel.set('dataSource', dataSource);
         fetchFilteredData(param);
     });
 
-})(app.purchaseHistoryView);
+})(app.subCategoryView);
 
-// START_CUSTOM_CODE_purchaseHistoryViewModel
+// START_CUSTOM_CODE_subCategoryViewModel
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 
-// END_CUSTOM_CODE_purchaseHistoryViewModel
+// END_CUSTOM_CODE_subCategoryViewModel

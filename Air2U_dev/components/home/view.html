@@ -14,4 +14,20 @@
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
 
     <!-- END_CUSTOM_CODE_home -->
+    <ul class="masterDetailView" data-role="listview" data-auto-bind="false" data-style="inset" data-template="homeModelTemplate" data-bind="source: homeModel.dataSource, events: {click: homeModel.itemClick}" data-pull-to-refresh="false" data-endless-scroll="false">
+    </ul>
+
+
+    <!-- START_CUSTOM_CODE_homeModel -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+
+    <!-- END_CUSTOM_CODE_homeModel -->
+    <script type="text/x-kendo-template" id="homeModelTemplate">
+        <div class="image-with-text">
+            # data = app.home.homeModel.fixHierarchicalData(data); #
+
+            <h3>#: data['Categoryname'] #</h3>
+
+        </div>
+    </script>
 </div>

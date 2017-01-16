@@ -1,27 +1,27 @@
 'use strict';
 
-app.categoryListView = kendo.observable({
+app.productListView = kendo.observable({
     onShow: function() {},
     afterShow: function() {}
 });
-app.localization.registerView('categoryListView');
+app.localization.registerView('productListView');
 
-// START_CUSTOM_CODE_categoryListView
+// START_CUSTOM_CODE_productListView
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 
-// END_CUSTOM_CODE_categoryListView
+// END_CUSTOM_CODE_productListView
 (function(parent) {
     var dataProvider = app.data.backendServices,
         /// start global model properties
         /// end global model properties
         fetchFilteredData = function(paramFilter, searchFilter) {
-            var model = parent.get('categoryListViewModel'),
+            var model = parent.get('productListViewModel'),
                 dataSource;
 
             if (model) {
                 dataSource = model.get('dataSource');
             } else {
-                parent.set('categoryListViewModel_delayedFetch', paramFilter || null);
+                parent.set('productListViewModel_delayedFetch', paramFilter || null);
                 return;
             }
 
@@ -64,7 +64,7 @@ app.localization.registerView('categoryListView');
         dataSourceOptions = {
             type: 'everlive',
             transport: {
-                typeName: 'Category',
+                typeName: 'Product',
                 dataProvider: dataProvider
             },
             change: function(e) {
@@ -93,8 +93,12 @@ app.localization.registerView('categoryListView');
             schema: {
                 model: {
                     fields: {
-                        'Categoryname': {
-                            field: 'Categoryname',
+                        'ProductDescription': {
+                            field: 'ProductDescription',
+                            defaultValue: ''
+                        },
+                        'cvPrice': {
+                            field: 'cvPrice',
                             defaultValue: ''
                         },
                     }
@@ -104,7 +108,7 @@ app.localization.registerView('categoryListView');
         },
         /// start data sources
         /// end data sources
-        categoryListViewModel = kendo.observable({
+        productListViewModel = kendo.observable({
             _dataSourceOptions: dataSourceOptions,
             fixHierarchicalData: function(data) {
                 var result = {},
@@ -158,36 +162,37 @@ app.localization.registerView('categoryListView');
                 return result;
             },
             itemClick: function(e) {
-                var dataItem = e.dataItem || categoryListViewModel.originalItem;
+                var dataItem = e.dataItem || productListViewModel.originalItem;
 
-                app.mobileApp.navigate('#components/categoryListView/details.html?uid=' + dataItem.uid);
+                app.mobileApp.navigate('#components/productListView/details.html?uid=' + dataItem.uid);
 
             },
             detailsShow: function(e) {
                 var uid = e.view.params.uid,
-                    dataSource = categoryListViewModel.get('dataSource'),
+                    dataSource = productListViewModel.get('dataSource'),
                     itemModel = dataSource.getByUid(uid);
 
-                categoryListViewModel.setCurrentItemByUid(uid);
+                productListViewModel.setCurrentItemByUid(uid);
 
                 /// start detail form show
                 /// end detail form show
             },
             setCurrentItemByUid: function(uid) {
                 var item = uid,
-                    dataSource = categoryListViewModel.get('dataSource'),
+                    dataSource = productListViewModel.get('dataSource'),
                     itemModel = dataSource.getByUid(item);
+                itemModel.ProductImagesUrl = processImage(itemModel.ProductImages);
 
-                if (!itemModel.Categoryname) {
-                    itemModel.Categoryname = String.fromCharCode(160);
+                if (!itemModel.ProductDescription) {
+                    itemModel.ProductDescription = String.fromCharCode(160);
                 }
 
                 /// start detail form initialization
                 /// end detail form initialization
 
-                categoryListViewModel.set('originalItem', itemModel);
-                categoryListViewModel.set('currentItem',
-                    categoryListViewModel.fixHierarchicalData(itemModel));
+                productListViewModel.set('originalItem', itemModel);
+                productListViewModel.set('currentItem',
+                    productListViewModel.fixHierarchicalData(itemModel));
 
                 return itemModel;
             },
@@ -205,22 +210,22 @@ app.localization.registerView('categoryListView');
 
     if (typeof dataProvider.sbProviderReady === 'function') {
         dataProvider.sbProviderReady(function dl_sbProviderReady() {
-            parent.set('categoryListViewModel', categoryListViewModel);
-            var param = parent.get('categoryListViewModel_delayedFetch');
+            parent.set('productListViewModel', productListViewModel);
+            var param = parent.get('productListViewModel_delayedFetch');
             if (typeof param !== 'undefined') {
-                parent.set('categoryListViewModel_delayedFetch', undefined);
+                parent.set('productListViewModel_delayedFetch', undefined);
                 fetchFilteredData(param);
             }
         });
     } else {
-        parent.set('categoryListViewModel', categoryListViewModel);
+        parent.set('productListViewModel', productListViewModel);
     }
 
     parent.set('onShow', function(e) {
         var param = e.view.params.filter ? JSON.parse(e.view.params.filter) : null,
             isListmenu = false,
             backbutton = e.view.element && e.view.element.find('header [data-role="navbar"] .backButtonWrapper'),
-            dataSourceOptions = categoryListViewModel.get('_dataSourceOptions'),
+            dataSourceOptions = productListViewModel.get('_dataSourceOptions'),
             dataSource;
 
         if (param || isListmenu) {
@@ -235,13 +240,13 @@ app.localization.registerView('categoryListView');
         }
 
         dataSource = new kendo.data.DataSource(dataSourceOptions);
-        categoryListViewModel.set('dataSource', dataSource);
+        productListViewModel.set('dataSource', dataSource);
         fetchFilteredData(param);
     });
 
-})(app.categoryListView);
+})(app.productListView);
 
-// START_CUSTOM_CODE_categoryListViewModel
+// START_CUSTOM_CODE_productListViewModel
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 
-// END_CUSTOM_CODE_categoryListViewModel
+// END_CUSTOM_CODE_productListViewModel
