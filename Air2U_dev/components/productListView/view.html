@@ -1,10 +1,10 @@
 <div data-role="view" data-title="View" data-layout="main-nonav" data-model="app.productListView" data-show="app.productListView.onShow" data-after-show="app.productListView.afterShow" id="productListViewScreen" class="screen">
     <header data-role="header">
         <div data-role="navbar" class="header-text">
-
+            <a data-role="backbutton" data-align="left">Back</a>
             <span data-bind="text: strings.productListView.title"></span>
 
-            <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
+            <!--<a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>-->
 
         </div>
     </header>
@@ -27,9 +27,11 @@
         <div class="image-with-text">
             # data = app.productListView.productListViewModel.fixHierarchicalData(data); #
 
-            <img src="#: data['ProductImagesUrl'] #">
+            <img src="#: data['ProductImagesUrl'][0] #">
             <h3>#: data['ProductName'] #</h3>
-            <p>#: data['cvPrice'] #</p>
+            <p><font color=red>cvPrice: #: data['cvPrice'] #</font></p>
+            <p>Qty: #: data['QTY'] #</p>
+            <p>pvPrice: #: data['pvPrice'] #</p>
         </div>
     </script>
 </div>
