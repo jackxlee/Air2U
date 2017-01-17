@@ -260,14 +260,6 @@
       "title": "Log In/Out",
       "addToNavigation": true,
       "icon": "mostrecent"
-    },
-    {
-      "type": "kendo-ui-mobile:view",
-      "name": "testView",
-      "components": [],
-      "title": "Test View",
-      "addToNavigation": true,
-      "icon": "wifi"
     }
   ],
   "dataProviders": [
