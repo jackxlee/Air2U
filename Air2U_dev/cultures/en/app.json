@@ -60,5 +60,8 @@
   },
   "loginModelView": {
     "title": "Log In/Out"
+  },
+  "testView": {
+    "title": "Test View"
   }
 }
