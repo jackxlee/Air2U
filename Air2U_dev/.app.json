@@ -30,7 +30,7 @@
           "itemActionSecondaryKey": "ParentCategory",
           "detailHeaderFieldSource": "dataBound",
           "detailHeaderField": "Categoryname",
-          "detailDescriptionField": "Categoryname"
+          "detailSubHeaderField": "Categoryname"
         }
       ],
       "title": "Home",
@@ -141,7 +141,7 @@
       ],
       "title": "Purchase History",
       "addToNavigation": true,
-      "icon": "reply"
+      "icon": "bookmarks"
     },
     {
       "type": "kendo-ui-mobile:view",

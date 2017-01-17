@@ -1,6 +1,33 @@
 'use strict';
 
 app.productListView = kendo.observable({
+	addtoCart: function() {
+		var el = new Everlive('o6yuauaw7f5m56jb');
+		var cartData = el.data('productCart');
+		// var query = new Everlive.Query();
+		// query.where().eq('productId', productId);
+		// cartData.get(query)
+		// .then(function(data){
+			// if (JSON.stringify(data).count > 0) {
+				// cartData.update({ 'productId' : 'productId', 'Qty' : qty, 'userId' : userId },
+    		// 	function(data){
+        	// 		alert(JSON.stringify(data));
+    		// 	},
+    		// 	function(error){
+        	// 		alert(JSON.stringify(error));
+    		// 	});
+			// } else{
+        		cartData.create({ 'productId' : '16548956321', 'Qty' : 5, 'userId' : null },
+    			function(data){
+        			alert(JSON.stringify(data));
+    			},
+    			function(error){
+        			alert(JSON.stringify(error));
+    			});
+			// }
+		// }
+	},
+	
     onShow: function() {},
     afterShow: function() {}
 });

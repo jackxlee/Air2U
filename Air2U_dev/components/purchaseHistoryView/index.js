@@ -3,7 +3,14 @@
 app.purchaseHistoryView = kendo.observable({
     onShow: function() {},
     afterShow: function() {}
+	
 });
+function viewInit(e) {
+    e.view.element.find("#listView").kendoMobileListView({
+        dataSource: [ "foo", "bar", "bar", "bar", "bar", "bar" ],
+        filterable:  true
+    });
+}
 app.localization.registerView('purchaseHistoryView');
 
 // START_CUSTOM_CODE_purchaseHistoryView
