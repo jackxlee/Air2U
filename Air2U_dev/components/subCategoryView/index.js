@@ -1,8 +1,7 @@
 'use strict';
 
 app.subCategoryView = kendo.observable({
-    onShow: function() {
-	},
+    onShow: function() {},
     afterShow: function() {}
 });
 app.localization.registerView('subCategoryView');

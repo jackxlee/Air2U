@@ -8,7 +8,9 @@ app.purchaseHistoryView = kendo.observable({
 function viewInit(e) {
     e.view.element.find("#listView").kendoMobileListView({
         dataSource: [ "foo", "bar", "car", "dar", "ear", "qar" ],
-        filterable:  true
+		 filterable: {
+            placeholder: "Search product name or Inv #..."
+        }
     });
 }
 function listViewClick(e) {

@@ -1,12 +1,44 @@
-
-
 <div data-role="view" data-title="Details" data-model="app.productListView.productListViewModel" data-bind="events: { show: detailsShow }" id="productListViewModelScreen" class="screen screen--detail">
     <header data-role="header">
         <div data-role="navbar" class="header-text">
             <a data-role="backbutton" data-align="left">Back</a>
             <span data-bind="text: currentItem['ProductName']"></span>
-            <a data-role="button" data-bind="click: addtoCart" data-align="right">Add to Cart</a>
+            <a data-role="button" data-align="right" data-click="addtoCart">Add to Cart</a>
         </div>
+		<script>
+		$(function(){
+    		function myClickHandler(e) {
+        	// Add Button click handler
+			alert("Click Add to Cart!");
+		var el = new Everlive('o6yuauaw7f5m56jb');
+		var cartData = el.data('ProductCart');
+		// var query = new Everlive.Query();
+		// query.where().eq('productId', productId);
+		// cartData.get(query)
+		// .then(function(data){
+			// if (JSON.stringify(data).count > 0) {
+				// cartData.update({ 'productId' : 'productId', 'Qty' : qty, 'userId' : userId },
+    		// 	function(data){
+        	// 		alert(JSON.stringify(data));
+    		// 	},
+    		// 	function(error){
+        	// 		alert(JSON.stringify(error));
+    		// 	});
+			// } else{
+        		cartData.create({ 'productId' : '16548956321', 'qty' : 5, 'userId' : null },
+    			function(data){
+        			alert(JSON.stringify(data));
+    			},
+    			function(error){
+        			alert(JSON.stringify(error));
+    			});
+			// }
+		// }
+    	}
+
+    kendo.init("#buttonsContainer");
+});
+</script>
     </header>
 
     <div class="details-content screen__content screen__content--details">
@@ -22,6 +54,8 @@
     </div>
     <!-- START_CUSTOM_CODE_productListViewModel -->
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-    <li> <button style="width: 100%" data-role="button" data-bind="click: addtoCart">Add to Cart</button> </li>
+    <li>
+        <button style="width: 100%" data-role="button" data-bind="click: addtoCart">Add to Cart</button>
+    </li>
     <!-- END_CUSTOM_CODE_productListViewModel -->
 </div>

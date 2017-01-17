@@ -71,9 +71,8 @@ app.localization.registerView('productListView');
                 var data = this.data();
                 for (var i = 0; i < data.length; i++) {
                     var dataItem = data[i];
-					navigator.notification.alert("Count:"+typeof dataItem['ProductImages']);
                     dataItem['ProductImagesUrl'] =
-                        processImage(dataItem['ProductImages'][0]);
+                        processImage(dataItem['ProductImages']);
 
                     /// start flattenLocation property
                     flattenLocationProperties(dataItem);
