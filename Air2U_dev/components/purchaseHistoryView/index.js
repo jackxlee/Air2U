@@ -11,6 +11,9 @@ function viewInit(e) {
         filterable:  true
     });
 }
+function listViewClick(e) {
+    console.log(e.item); // The clicked item as a jQuery object
+}
 app.localization.registerView('purchaseHistoryView');
 
 // START_CUSTOM_CODE_purchaseHistoryView

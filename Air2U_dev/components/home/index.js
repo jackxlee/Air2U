@@ -190,7 +190,7 @@ function processImage(img) {
                     value: dataItem.Id,
                     operator: 'eq'
                 })));
-
+				
             },
             detailsShow: function(e) {
                 var uid = e.view.params.uid,
